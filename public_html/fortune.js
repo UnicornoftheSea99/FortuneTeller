@@ -12,7 +12,7 @@
 
 //need to write Start Page function
 
-
+init();
 
 function init(){
     var xmlhttp = new XMLHttpRequest();

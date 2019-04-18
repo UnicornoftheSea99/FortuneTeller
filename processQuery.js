@@ -4,16 +4,16 @@ exports.processQuery = function (query, res) {
     // so we can either upload albums or photos
     switch (query.request) {
         case "start":
-            scheduleApp(res, query);
+            start(res, query);
             break;
         case "answer":
-            cancelApp(res, query);
+            answer(res, query);
             break;
         case "nextQ":
-            cancelApp(res, query);
+            nextQ(res, query);
             break;
         case "reveal":
-            cancelApp(res, query);
+            reveal(res, query);
             break;
         default:
             // report error for any other query 
