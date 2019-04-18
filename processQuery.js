@@ -4,16 +4,16 @@ exports.processQuery = function (query, res) {
     // so we can either upload albums or photos
     switch (query.request) {
         case "start":
-            scheduleApp(res, query);
+            start(res, query);
             break;
         case "answer":
-            cancelApp(res, query);
+            answer(res, query);
             break;
         case "nextQ":
-            cancelApp(res, query);
+            nextQ(res, query);
             break;
         case "reveal":
-            cancelApp(res, query);
+            reveal(res, query);
             break;
         default:
             // report error for any other query 
@@ -22,4 +22,10 @@ exports.processQuery = function (query, res) {
             break;
     }
 
+}
+
+function start(res, query) {
+    // ideally this would be choosing the first element
+    // in an array of questions 
+    utils.sendText(res, 200, "Question #1");
 }
