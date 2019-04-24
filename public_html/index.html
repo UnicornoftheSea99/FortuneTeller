@@ -33,12 +33,9 @@
         <!--Question 1-->
         <div id="1">
             <h3>"What subject plagues your mind?"</h3>
-            <form>
-                    <input type="checkbox" name="11" value="Love"> Love<br>
-                    <input type="checkbox" name="12" value="Work"> Work<br>
-                    <input type="checkbox" name="12" value="Friendship"> Friendship<br>
-                    <input type="checkbox" name="12" value="Random"> Anything at All!
-            </form>
+            <button id="11" onClick="reply_click(this.id)">B1</button>
+            <button id="12" onClick="reply_click(this.id)">B2</button>
+            <button id="13" onClick="reply_click(this.id)">B3</button>
             
         </div>
 
@@ -67,7 +64,7 @@
         <br>
         <input type="submit" value="Submit">
         <input type="reset">
-
+        <!-- need to do <script> tag to connect it to whatever js file using -->
     </body>
 
 </html>
