@@ -5,86 +5,60 @@
 
 <!-- Source: https://www.google.com/search?q=how+to+create+a+quiz+using+html+and+javascript&oq
     =how+to+create+html+quiz&aqs=chrome.1.69i57j0l5.6635j1j1&sourceid=chrome&ie=UTF-8#kpvalbx=1 -->
+<html>
 
-<head>
-    <title>Unlock your Future</title>
-    <link href="style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
-    <script src="fortune.js"></script>
-</head>
+    <head>
+        <title>Unlock your Future</title>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
+        <script src="fortune.js"></script>
+    </head>
 
-<body>
+    <body>
 
-    <h1>
-        <center>Unlock your Future</center>
-    </h1>
-    <h2>
-        <center>Answer these questions to find the answers you seek</center>
-    </h2>
+        <h1>
+            <center>Unlock your Future</center>
+        </h1>
+        <h2>
+            <center>Answer these questions to find the answers you seek</center>
+        </h2>
 
-    <!-- to retrive answers, would look like following:
-        document.quiz.question1.value; -->
-    <form id="quiz" name="quiz">
-        <!-- this is the format for each question. idea is to have questions uploaded in this format -->
-        <fieldset id>
-            <div id="div1">
+        <!-- to retrive answers, would look like following:
+                    document.quiz.question1.value; -->
+        <form id="quiz" name="quiz">
+            <!-- this is the format for each question. idea is to have questions uploaded in this format -->
+            <fieldset id>
+                <div id = "div1"></div>
+                <!-- <legend>Question One</legend>
+                What subject plagues your mind?<br>
+                <input type="radio" name="question1" value="school">School
+                <br>
+                <input type="radio" name="question1" value="family">Family
+                <br><br> -->
+            </fieldset>
+            <!-- <fieldset>
+                <legend>Question Two</legend>
+                What is your favoite color?<br>
+                <input type="radio" name="question2" value="blue">Blue
+                <br>
+                <input type="radio" name="question2" value="green">Green
+                <br><br>
+            </fieldset>  -->
+            <!-- adding css to make this change colors :) -->
+            <input id="button" type="button" value="Submit" onclick="check()"> 
+        </form>
 
-            </div>
-            <!-- <legend>Question One</legend>
-              What subject plagues your mind?<br>
-              <input type="radio" name="question1" value="school">School
-              <br>
-              <input type="radio" name="question1" value="family">Family
-              <br><br> -->
-        </fieldset>
-        <!-- <fieldset>
-                    <legend>Question Two</legend>
-                    What is your favoite color?<br>
-                    <input type="radio" name="question2" value="blue">Blue
-                    <br>
-                    <input type="radio" name="question2" value="green">Green
-                    <br><br>
-            </fieldset> -->
-        <!-- adding css to make this change colors :) -->
-        <input id="button" type="button" value="Submit" onclick="check()">
-    </form>
+        <!-- <div id="aftersubmit">
+            <p id="message">Hello!</p>
+            <img id="picture">
+        </div> -->
 
+        <!-- <div id="mainDiv" style="overflow:scroll;
+                                            width: 330px;
+                                            height:300px;
+                                            background-color: whitesmoke"> </div>
+                                            <p></p> -->
 
-    <!-- to retrive answers, would look like following:
-        document.quiz.question1.value; -->
-    <form id="quiz" name="quiz">
-        <!-- this is the format for each question. idea is to have questions uploaded in this format -->
-        <fieldset>
-            <legend>Question One</legend>
-            What subject plagues your mind?<br>
-            <input type="radio" name="question1" value="school">School
-            <br>
-            <input type="radio" name="question1" value="family">Family
-            <br><br>
-        </fieldset>
-        <fieldset>
-            <legend>Question Two</legend>
-            What is your favoite color?<br>
-            <input type="radio" name="question2" value="blue">Blue
-            <br>
-            <input type="radio" name="question2" value="green">Green
-            <br><br>
-        </fieldset>
-        <!-- adding css to make this change colors :) -->
-        <input id="button" type="button" value="Submit" onclick="check()">
-    </form>
-
-    <div id="aftersubmit">
-        <p id="message">Hello!</p>
-        <img id="picture">
-    </div>
-
-    <!-- <div id="mainDiv" style="overflow:scroll;
-                                width: 330px;
-                                height:300px;
-                                background-color: whitesmoke"> </div>
-                                <p></p> -->
-
-</body>
+    </body>
 
 </html>
