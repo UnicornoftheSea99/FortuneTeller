@@ -57,12 +57,12 @@ function check() {
     //HOW TO GET FORTUNES TO SHOW UP AT THE END
     //fortunes is the array of fortunes, found in fortuneTeller.js
     //range (right now 0) is the index
-    document.getElementById("message").innerHTML = fortunes[0];
+    document.getElementById("message").innerHTML = fortunes[0].fortune;
 
     //how to get images to show up with each fortune
     //pictures is an array of picture names, which are in a file in public html
     //range is index
-    document.getElementById("picture").src = pictures[1];
+    document.getElementById("picture").src = pictures[0];
 }
 
 init();
@@ -104,6 +104,7 @@ function addQ(obj) {
         ops.id = "ops";
         ops.name = "options";  //this needs to be different for each question so can choose multiple. in accordance with code, would be "question1", "question2"...
         //value also needs to be saved
+        //needs to be able to be retrieved by document.quiz.question1.value;
         field.appendChild(ops);
         
 
