@@ -38,9 +38,7 @@ function init() {
 function loadQs() {
     // load designed page 
     if (this.status == 200) {
-        // just a string now because i have one question
         response = JSON.parse(this.responseText);
-
         response.forEach(addQ);
     }
 
@@ -66,22 +64,10 @@ function addQ(obj) {
         label.for = "ops";
         label.innerHTML = x[Object.keys(x)[0]];
         field.appendChild(label);
+
+        var br = document.createElement("br");
+        field.appendChild(br);
     })
-
-
-    // var h3 = document.createElement("h3");
-
-
-    // answer = i.option[0].a;
-    // h3.innerHTML = answer;
-
-    // console.log(i.option)
-    // for(answers in i.option) {
-    //     h3.innerHTML = answers.a;
-    // }
-
-    // var element = document.getElementById("2");
-    // element.appendChild(h3); 
 }
 
 function getFortune() {
