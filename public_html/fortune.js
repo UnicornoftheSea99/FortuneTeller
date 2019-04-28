@@ -6,7 +6,7 @@
 
 //this is what happens after client clicks submit button
 function check() {
-    var1 = document.quiz.question1.value; //this is the answer client pick to question 1
+    // var1 = document.quiz.question1.value; //this is the answer client pick to question 1
 
     //makes whatever is in the aftersubmit div in html show up once this function called
     document.getElementById("aftersubmit").style.visibility = "visible";
@@ -15,12 +15,12 @@ function check() {
     //HOW TO GET FORTUNES TO SHOW UP AT THE END
     //fortunes is the array of fortunes, found in fortuneTeller.js
     //range is the index
-    document.getElementById("message").innerHTML = fortunes[range];
+    // document.getElementById("message").innerHTML = fortunes[range];
 
     //how to get images to show up with each fortune
     //pictures is an array of picture names, which are in a file in public html
     //range is index
-    document.getElementById("picture").src = pictures[range];
+    // document.getElementById("picture").src = pictures[range];
 }
 
 init();
