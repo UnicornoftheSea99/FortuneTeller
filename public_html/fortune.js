@@ -23,45 +23,6 @@ function check() {
     document.getElementById("picture").src=pictures[range];
 }
 
-
-//OTHER STUFF
-//document.getElementById("submit").addEventListener("click", attempts)
-// attempts();
-
-//MIGHT USE LATER
-// function addMessage(msg) {
-//     console.log("showing the message");
-//     console.log(msg); //show message in console
-//     var para = document.createElement("p"); //creates a new paragraph element 
-//     para.innerHTML = "user: "+msg.sender;  //in new paragraph elem put in name of client sending message            
-//     var element = document.getElementById("mainDiv"); //refer to element in html file with id "mainDiv"
-//     element.appendChild(para); //add created paragraph to the existing html element
-
-//     var para = document.createElement("p"); //creates new paragraph element
-//     para.innerHTML = "Message: "+msg.message; //in new paragraph element put in message from other client             
-//     var element = document.getElementById("mainDiv"); //refer to element in html file with id "mainDiv"
-//     element.appendChild(para);//add created paragraph to the existing html element
-// }
-
-// function attempts() {
-//     console.log("we're here because we're here because we're here")
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onload = function () {
-//         if (this.status == 200) {
-//             if (this.responseText.length >= 1) {
-//                 response = JSON.parse(this.responseText);
-//                 console.log(response)
-//             }
-
-//         }
-//     }
-//     // console.log("init");
-//     xmlhttp.onerror = function () { alert("Error initializing") };
-//     var request = { request: "trial" };
-//     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  //GET or POST?
-//     xmlhttp.send();
-// }
-
 init();
 
 function init() {
@@ -87,10 +48,23 @@ function loadQs() {
 
 function addQ(i) {
     // questions 
-    var h3 = document.createElement("h3");
+    var h3 = document.createElement("legend");
+    console.log(i.q)
     h3.innerHTML = i.q;
     var element = document.getElementById("div1");
     element.appendChild(h3); 
+
+    var h3 = document.createElement("input");
+    h3.type = "radio";
+    h3.id = "h3"
+    var element = document.getElementById("div1");
+    element.appendChild(h3);
+
+    var label = document.createElement("label");
+    label.for = "h3";
+    label.innerHTML = "chaou";
+    var element = document.getElementById("div1");
+    element.appendChild(label);
 
     // var h3 = document.createElement("h3");
     // one = i.option.forEach(function(x){
@@ -108,10 +82,6 @@ function addQ(i) {
 
     // var element = document.getElementById("2");
     // element.appendChild(h3); 
-}
-
-function addAnswer(options){
-    return options.a;
 }
 
 function getFortune() {
@@ -134,30 +104,6 @@ function loadFortune() {
         element.appendChild(h3);
     }
 }
-
-// activated on click of next button
-// for now we'll start  with this
-// function loadQuestion() {
-//     var xmlhttp2 = new XMLHttpRequest();
-//     xmlhttp2.onload = getQ;
-//     // console.log("init");
-//     xmlhttp2.onerror = function () { alert("Error loading start page") };
-//     var request = { request: "loadQuestion" }; //will grab question and answer array
-//     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  //GET or POST?
-//     xmlhttp.send();
-// }
-
-
-// /**
-//  * All the question showing shtuff
-//  */
-// function showQ() {
-//     var question = document.getElementById("1a");
-//     question.innerHTML = questionArr[0];
-//     //var qOptions = ?
-//     var selectObj = document.getElementById("1b");
-//     qOptions.forEach(name => selectObj.options[selectObj.options.length] = new Option(name)); //form? input?
-// }
 
 // needed to make AJAX request work
 function queryObjectToString(query) {
