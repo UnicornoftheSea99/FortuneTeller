@@ -10,14 +10,35 @@ body  {
     color: white;
     text-align: center;
     font-family: 'Cinzel Decorative', cursive;
+    padding: 70px 0;
 }
-img {
+
+/* will use later for showing fortune */
+img { 
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 #aftersubmit {
     visibility: hidden
+}
+
+#unlock {
+    background: rgb(225, 99, 225);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    transition-duration: .5s;
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+#unlock:hover {
+    background: white;
+    border: 1px rgb(225, 99, 225);
+    color: black;
+    cursor: pointer
 }
 
 #button {

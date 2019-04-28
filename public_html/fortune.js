@@ -70,7 +70,7 @@ function init() {
     xmlhttp.onload = loadQs;
     xmlhttp.onerror = function () { alert("Error loading start page") };
     var request = { request: "getQs" };
-    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  //GET or POST?
+    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  
     xmlhttp.send();
 }
 
