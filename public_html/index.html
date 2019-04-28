@@ -1,70 +1,48 @@
 <!DOCTYPE html>
 
-<!--CSC220 Deliverable-->
-<!--Estimate of what question part of website will look like-->
+<!-- HTML  -->
+<!-- Emily Rhyu -->
 
-
-
-<html>  
+<!-- Source: https://www.google.com/search?q=how+to+create+a+quiz+using+html+and+javascript&oq
+    =how+to+create+html+quiz&aqs=chrome.1.69i57j0l5.6635j1j1&sourceid=chrome&ie=UTF-8#kpvalbx=1 -->
+<html>
 <head>
     <title>Unlock your Future</title>
-    <style>
-        body  {
-            background-image: url("https://ak2.picdn.net/shutterstock/videos/12698342/thumb/1.jpg");
-            background-size:cover;
-            color: white;
-            text-align: center;
-}
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
+    <script src="fortune.js"></script>
 </head>
+
     <body>
 
-        <h1><center>Unlock your Future</center></h1>
-        <h2><center>Answer these questions to find the answers you seek</center></h2>
+        <h1>
+            <center>Unlock your Future</center>
+        </h1>
 
-        <!--<p><img src ="https://revenuesandprofits.com/wp-content/uploads/2019/01/How-Disney-Makes-Money-1.jpg" 
-            alt="Disney Castle" style="width:600px;height:300px;" class="center"></p>-->
+        <!-- to retrive answers, would look like following:
+                    document.quiz.question1.value; -->
+        <form id="form" name="quiz">
+            <!-- this is the format for each question. idea is to have questions uploaded in this format -->
+            <!-- <fieldset>
+                <div id = "div1"></div> -->
+                <!-- <legend>Question One</legend>
+                What subject plagues your mind?<br>
+                <input type="radio" name="question1" value="school">School
+                <br>
+                <input type="radio" name="question1" value="family">Family
+                <br><br> -->
+            <!-- </fieldset> -->
+            <!-- adding css to make this change colors :) -->
 
-        <!--Question 1-->
-        <div id="1">
-            <h3>"What subject plagues your mind?"</h3>
-            <button id="11" onClick="reply_click(this.id)">B1</button>
-            <button id="12" onClick="reply_click(this.id)">B2</button>
-            <button id="13" onClick="reply_click(this.id)">B3</button>
-            
+        </form>
+
+        <input id="button" type="button" value="Submit" onclick="check()"> 
+
+        <div id="aftersubmit">
+            <p id="message">Hello!</p>
+            <img id="picture">
         </div>
 
-        <!--Question 2-->
-        <div id ="2">
-            <h3>"Click the emotion that best describes you"</h3>
-            <form>
-                    <input type="checkbox" name="21" value="happy"> Happy<br>
-                    <input type="checkbox" name="22" value="sad">Sad<br>
-                    <input type="checkbox" name="23" value="tired">Tired<br>
-                    <input type="checkbox" name="24" value="mad">Angry
-                    
-            </form>
-        </div>
-
-        <!--Question 3-->
-        <div id ="3">
-            <h3>“Pick a word”</h3>
-            <form>
-                    <input type="checkbox" name="31" value="limbo"> Limbo<br>
-                    <input type="checkbox" name="32" value="Mystic"> Mystic<br>
-                    <input type="checkbox" name="33" value="Dream"> Dream<br>
-                    <input type="checkbox" name="34" value="Ocean"> Ocean<br>
-            </form>
-        </div>
-        <br>
-        <input type="submit" value="Submit">
-        <input type="reset">
-        <!-- need to do <script> tag to connect it to whatever js file using -->
     </body>
 
 </html>

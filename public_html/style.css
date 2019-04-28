@@ -1,0 +1,66 @@
+/* css file */
+/* Emily Rhyu */
+
+/* Source: https://www.google.com/search?q=how+to+create+a+quiz+using+html+and+javascript&oq=how+to+
+create+html+quiz&aqs=chrome.1.69i57j0l5.6635j1j1&sourceid=chrome&ie=UTF-8#kpvalbx=1 */
+
+body  {
+    background-image: url("https://ak2.picdn.net/shutterstock/videos/12698342/thumb/1.jpg");
+    background-size:cover;
+    color: white;
+    text-align: center;
+    font-family: 'Cinzel Decorative', cursive;
+    padding: 70px 0;
+}
+
+/* will use later for showing fortune */
+img { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#aftersubmit {
+    visibility: hidden
+}
+
+#unlock {
+    background: rgb(225, 99, 225);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    transition-duration: .5s;
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+#unlock:hover {
+    background: white;
+    border: 1px rgb(225, 99, 225);
+    color: black;
+    cursor: pointer
+}
+
+#button {
+    background: rgb(225, 99, 225);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    transition-duration: .5s;
+}
+
+#button:hover {
+    background: white;
+    border: 1px rgb(225, 99, 225);
+    color: black;
+    cursor: pointer
+}
+
+/* div.parent {
+    overflow:scroll;
+    overflow-y:auto;
+    width: 330px;
+    height:300px;
+    background-color: whitesmoke;
+} */
+
