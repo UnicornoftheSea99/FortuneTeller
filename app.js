@@ -3,8 +3,10 @@
 
 // call back function 
 // create server and make it listen 
-// fileServer = require('./fileServer.js');
-http = require('http');
+var http = require('http'),
+    url = require('url'),
+    fileServer = require('./fileServer.js'),
+    utils = require('./utils.js');
 
 // app require albumQury
 qMod = require("./processQuery.js")
@@ -13,7 +15,7 @@ qMod = require("./processQuery.js")
 // that gives it the request and response it needs
 handle_incoming_request = function (req, res) {
     // parse url and query 
-    // var path = url.parse(req.url).pathname;
+    var path = url.parse(req.url).pathname;
     var queryObj = url.parse(req.url, "true").query;
 
     // if there was a query given, call our query processing function

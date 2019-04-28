@@ -8,6 +8,8 @@ exports.sendJSONObj = function(res, status, data) {
     res.end();
 }
 
+
+
 // just added this function too because i notied we use it in 
 // app.js but it was never created 
 exports.sendError = function(res, data) {
