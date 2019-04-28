@@ -2,19 +2,6 @@
 //fucntion that contains fortunes and assigns values to each one
 
 
-//Object of fotunes and their values
-var fortunes =
-    [
-        { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.', totalVal: 10 },
-        { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.', totalVal: 20 },
-        { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ', totalVal: 25 },
-        { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.', totalVal: 5 },
-        { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.', totalVal: 15 }
-    ];
-
-//total value from the responses of each answer
-// var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
-
 
 exports.generateQs = function () {
     var questions = [
@@ -39,7 +26,7 @@ exports.generateQs = function () {
     return questions;
 }
 
-
+//functionality moved to fortune.js
 //function to figure out which fortune to give back to the user
 exports.getFortune = function(values) {
     return fortunes[0].fortune;
