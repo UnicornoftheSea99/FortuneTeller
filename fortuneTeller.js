@@ -15,13 +15,6 @@ var fortunes =
 //total value from the responses of each answer
 // var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
 
-/* <button id="1" onClick="reply_click(this.id)">B1</button>
-<button id="2" onClick="reply_click(this.id)">B2</button>
-<button id="3" onClick="reply_click(this.id)">B3</button> */
-
-// function reply_click(clicked_id) {
-//     return clicked_id;
-// }
 
 exports.generateQs = function () {
     var questions = [
