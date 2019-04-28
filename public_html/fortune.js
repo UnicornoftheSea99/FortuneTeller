@@ -31,7 +31,7 @@ function init() {
     xmlhttp.onload = loadQs;
     xmlhttp.onerror = function () { alert("Error loading start page") };
     var request = { request: "getQs" };
-    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  
+    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
 }
 
@@ -40,46 +40,37 @@ function loadQs() {
     if (this.status == 200) {
         // just a string now because i have one question
         response = JSON.parse(this.responseText);
-        // response.forEach(addQ);
 
-        qs = []
-        response.forEach(function(x){qs.push(x.q)});
-        
-        qs.forEach(addQ);
+        response.forEach(addQ);
     }
 
     else alert("Error loading question");
 }
 
-function addQ(q) {
-    console.log(q)
-    // response.forEach
+function addQ(obj) {
     var field = document.createElement("fieldset");
     var element = document.getElementById("form");
     element.appendChild(field);
 
-    var h3 = document.createElement("legend");
-    h3.innerHTML = JSON.stringify(q);
-    //var element = document.getElementById("field");
-    field.appendChild(h3);
+    var question = document.createElement("legend");
+    question.innerHTML = obj.q;
+    field.appendChild(question);
 
-    var h3 = document.createElement("input");
-    h3.type = "radio";
-    h3.id = "h3"
-    //var element = document.getElementById("field");
-    field.appendChild(h3);
+    one = obj.option.forEach(function (x) {
+        var ops = document.createElement("input");
+        ops.type = "radio";
+        ops.id = "ops";
+        field.appendChild(ops);
 
-    var label = document.createElement("label");
-    label.for = "h3";
-    label.innerHTML = "chaou";
-    //var element = document.getElementById("field");
-    field.appendChild(label);
+        var label = document.createElement("label");
+        label.for = "ops";
+        label.innerHTML = x[Object.keys(x)[0]];
+        field.appendChild(label);
+    })
+
 
     // var h3 = document.createElement("h3");
-    // one = i.option.forEach(function(x){
-    //     console.log( x[Object.keys(x)[0]])
-    //     h3.innerHTML = x[Object.keys(x)[0]];
-    // })
+
 
     // answer = i.option[0].a;
     // h3.innerHTML = answer;
