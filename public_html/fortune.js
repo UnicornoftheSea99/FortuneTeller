@@ -1,3 +1,4 @@
+
 //Client Side
 //Emily
 
@@ -54,10 +55,11 @@ function addQ(obj) {
     question.innerHTML = obj.q;
     field.appendChild(question);
 
-    one = obj.option.forEach(function (x) {
+    obj.option.forEach(function (x) {
         var ops = document.createElement("input");
         ops.type = "radio";
         ops.id = "ops";
+        ops.name = "options";
         field.appendChild(ops);
 
         var label = document.createElement("label");
