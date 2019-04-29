@@ -1,10 +1,6 @@
 //fortuneTeller.js
 //fucntion that contains fortunes and assigns values to each one
-
-
-
-exports.generateQs = function () {
-    var questions = [
+var questions = [
     {
         q: "How do you feel today?",
         option: [{ a: "Happy", value: 4 }, { b: "Angry", value: 1 }, { c: "Sad", value: 2 }, { d: "Tired", value: 3 }]
@@ -23,7 +19,7 @@ exports.generateQs = function () {
     },
     {
         q: "What is your ideal vacation?",
-        option: [{ a: "Disney World", value: 3}, { b: "Hawaii", value: 1 }, { c: "Anywhere, as long as I'm with the people I love", value: 4 }, { d: "A winter wonderland", value: 2 }]
+        option: [{ a: "Disney World", value: 3 }, { b: "Hawaii", value: 1 }, { c: "Anywhere, as long as I'm with the people I love", value: 4 }, { d: "A winter wonderland", value: 2 }]
     },
     {
         q: "What worries you?",
@@ -35,7 +31,7 @@ exports.generateQs = function () {
     },
     {
         q: "Apples or Oranges?",
-        option: [{ a: "Apples", value: 3 }, { b: "Oranges", value: 2  }, { c: "Both", value: 4 }, { d: "Neither", value: 1 }]
+        option: [{ a: "Apples", value: 3 }, { b: "Oranges", value: 2 }, { c: "Both", value: 4 }, { d: "Neither", value: 1 }]
     },
     {
         q: "What would your super power be?",
@@ -86,23 +82,32 @@ exports.generateQs = function () {
         q: "Which animal most describes your personality?",
         option: [{ a: "fish", value: 3 }, { b: "cat", value: 2 }, { c: "bird", value: 4 }, { d: "cameleon", value: 1 }]
     }
-    ]
+]
 
+exports.generateQs =  function() {
     choices = [];
-    //choose six questions
+    numbers = [];
+    
+    // choose six questions
     while (choices.length < 6) {
-        magicNumber = Math.floor(Math.random) + 6;
-        choices.push(questions[magicNumber].q);
+        console.log(choices.length);
+        magicNumber = Math.floor(Math.random() * 6);
+        console.log(magicNumber);
+        if(numbers.indexOf(magicNumber) < 0){
+            choices.push(questions[magicNumber]);
+            numbers.push(magicNumber);
+        }
     }
-
+    
+    // return choices;
+    // console.log(choices)
     return choices;
-    return questions;
 }
 
 //functionality moved to fortune.js
 //function to figure out which fortune to give back to the user
-exports.getFortune = function(values) {
-    return fortunes[0].fortune;
-};
+// exports.getFortune = function (values) {
+//     return fortunes[0].fortune;
+// };
 
 

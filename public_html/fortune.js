@@ -14,18 +14,18 @@ function check() {
 
     //Object of fortunes and their values
     var fortunes =
-    [
-    { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.'},
-    { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.'},
-    { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. '},
-    { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.'},
-    { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.'}
-    ];
+        [
+            { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
+            { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.' },
+            { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
+            { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
+            { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
+        ];
 
     var pictures =
-    [
-        "img/f1.gif","img/f2.gif","img/f3.gif", "img/f4.gif","img/f5.gif"
-    ]
+        [
+            "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
+        ]
 
     // var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
     //var Q1=parseInt(q1);
@@ -47,7 +47,7 @@ function check() {
     //example:
     //var range;
     //if (totalFortuneValue>=10){
-        //range=1;
+    //range=1;
     //}
 
     //makes whatever is in the aftersubmit div in html show up once this function called
@@ -91,6 +91,7 @@ function addQ(obj) {
     var field = document.createElement("fieldset");
     var element = document.getElementById("form");
     element.appendChild(field);
+
     var mybr = document.createElement('br');
     element.appendChild(mybr);
 
@@ -106,7 +107,6 @@ function addQ(obj) {
         //value also needs to be saved
         //needs to be able to be retrieved by document.quiz.question1.value;
         field.appendChild(ops);
-        
 
         var label = document.createElement("label");
         label.for = "ops";
@@ -124,7 +124,7 @@ function getFortune() {
     xmlhttp.onload = loadFortune;
     xmlhttp.onerror = function () { alert("Error loading start page") };
     var request = { request: "getFortune", value: "answer" };
-    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));  
+    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
 }
 
