@@ -88,14 +88,14 @@ exports.generateQs = function () {
     }
     ]
 
-    // choices = [];
+    choices = [];
     //choose six questions
-    // while (choices.length < 6) {
-    //     magicNumber = Math.floor(Math.random) + 6;
-    //     choices.push(questions[magicNumber].q);
-    // }
+    while (choices.length < 6) {
+        magicNumber = Math.floor(Math.random) + 6;
+        choices.push(questions[magicNumber].q);
+    }
 
-    // return choices;
+    return choices;
     return questions;
 }
 
