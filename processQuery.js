@@ -11,12 +11,13 @@ exports.processQuery = function (query, res) {
     // check what request we received from the client
     // so we can either upload albums or photos
     switch (query.request) {
+        // query to generate questions
         case "getQs":
             loadQuestion(res);
             break;
-        case "getFortune":
-            getFortune(res, query);
-            break;
+        // case "getFortune":
+        //     getFortune(res, query);
+        //     break;
         default:
             // report error for any other query 
             var errObj = { message: "Query not supported" };
@@ -25,6 +26,11 @@ exports.processQuery = function (query, res) {
     }
 }
 
+/**
+ * Function that receives 6 generated questions from another
+ * module and sends them back to client
+ * @param {*} res response to send client
+ */
 function loadQuestion(res) {
     // generate questions
     questions = qf.generateQs();
@@ -33,8 +39,11 @@ function loadQuestion(res) {
     utils.sendJSONObj(res, 200, questions);
 }
 
-function getFortune(res, query) {
-    totalVal = query.value;
-    fortune = qf.getFortune(totalVal);
-    utils.sendJSONObj(res, 200, fortune);
-}
+/**
+ * Server side version of generating fortune
+ */
+// function getFortune(res, query) {
+//     totalVal = query.value;
+//     fortune = qf.getFortune(totalVal);
+//     utils.sendJSONObj(res, 200, fortune);
+// }
