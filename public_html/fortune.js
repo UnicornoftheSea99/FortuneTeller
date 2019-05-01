@@ -1,4 +1,3 @@
-
 //Client Side
 //Emily
 
@@ -11,21 +10,7 @@
 
 //this is what happens after client clicks submit button
 function check() {
-
     //Object of fortunes and their values
-    var fortunes =
-        [
-            { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
-            { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.' },
-            { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
-            { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
-            { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
-        ];
-
-    var pictures =
-        [
-            "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
-        ]
 
     // var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
     //var Q1=parseInt(q1);
@@ -81,13 +66,16 @@ function loadQs() {
     // load designed page 
     if (this.status == 200) {
         response = JSON.parse(this.responseText);
-        response.forEach(addQ);
+        counter = 0;
+        response.forEach(addQ, counter);
     }
 
     else alert("Error loading question");
 }
 
-function addQ(obj) {
+function addQ(obj, counter) {
+    counter = counter + 1;
+
     var field = document.createElement("fieldset");
     var element = document.getElementById("form");
     element.appendChild(field);
@@ -100,16 +88,18 @@ function addQ(obj) {
     field.appendChild(question);
 
     obj.option.forEach(function (x) {
+        // counter2 ++;
         var ops = document.createElement("input");
         ops.type = "radio";
-        ops.id = "ops";
-        ops.name = "options";  //this needs to be different for each question so can choose multiple. in accordance with code, would be "question1", "question2"...
-        //value also needs to be saved
-        //needs to be able to be retrieved by document.quiz.question1.value;
+        ops.id = x.value;
+        ops.name = "options" + counter;
+        // ops.value = "som" + counter2;
         field.appendChild(ops);
 
+        console.log(ops.id)
+
         var label = document.createElement("label");
-        label.for = "ops";
+        label.for = ops.id;
         label.innerHTML = x[Object.keys(x)[0]];
         field.appendChild(label);
 
@@ -118,28 +108,28 @@ function addQ(obj) {
     })
 }
 
+function getValueOfAnswers(){
+    document.getElementById("s").checked;
+}
+
 //not needed? can just do within fortune.js
 function getFortune() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = loadFortune;
     xmlhttp.onerror = function () { alert("Error loading start page") };
-    var request = { request: "getFortune", value: "answer" };
+    values = getValueofAnswers;
+    var request = { request: "getFortune", value: values };
     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
 }
 
-//not needed?
-function loadFortune() {
-    if (this.status == 200) {
-        // just a string now because i have one question
-        response = this.responseText;
-        var h3 = document.createElement("h3");
-        h3.innerHTML = response;
-        // then get our div and add the paragraph to it
-        var element = document.getElementById("message");
-        element.appendChild(h3);
-    }
-}
+// //not needed?
+// function loadFortune() {
+//     if (this.status == 200) {
+//         // just a string now because i have one question
+//         response = this.responseText;
+//     }
+// }
 
 function queryObjectToString(query) {
     // console.log(query);
