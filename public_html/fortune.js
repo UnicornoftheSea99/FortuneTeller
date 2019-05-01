@@ -11,43 +11,65 @@
 //this is what happens after client clicks submit button
 function check() {
     //Object of fortunes and their values
+    var fortunes =
+    [
+        { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
+        { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.' },
+        { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
+        { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
+        { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
+    ];
 
-    // var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
-    //var Q1=parseInt(q1);
-    // var q2 = document.quiz.question2.value;
-    // var Q2=parseInt(q2);
-    // var q3 = document.quiz.question3.value;
-    // var Q3=parseInt(q3);
-    // var q4 = document.quiz.question4.value;
-    // var Q4=parseInt(q4);
-    // var q5 = document.quiz.question5.value;
-    // var Q5=parseInt(q5);
-    // var q6 = document.quiz.question6.value;
-    // var Q6=parseInt(q6);
+    var pictures =
+    [
+        "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
+    ]
+
+    var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
+    var Q1=parseInt(q1);
+    var q2 = document.quiz.question2.value;
+    var Q2=parseInt(q2);
+    var q3 = document.quiz.question3.value;
+    var Q3=parseInt(q3);
+    var q4 = document.quiz.question4.value;
+    var Q4=parseInt(q4);
+    var q5 = document.quiz.question5.value;
+    var Q5=parseInt(q5);
+    var q6 = document.quiz.question6.value;
+    var Q6=parseInt(q6);
 
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
+    console.log("total value is"+ totalFortuneValue);
 
-    //add if statements here to set range, which is index of fortunes and pictures
-    //example:
-    //var range;
-    //if (totalFortuneValue>=10){
-    //range=1;
-    //}
+    //figure out which fortune
+    var range;
+    if (totalFortuneValue<=5){
+        range=0;
+    }
+    if (totalFortuneValue<=10 && totalFortuneValue>5){
+        range=1;
+    }
+    if (totalFortuneValue<=15 && totalFortuneValue>10){
+        range=2;
+    }
+    if (totalFortuneValue<=20 && totalFortuneValue>15){
+        range=3;
+    }
+    if (totalFortuneValue<25 && totalFortuneValue>20){
+        range=4;
+    }
 
     //makes whatever is in the aftersubmit div in html show up once this function called
     document.getElementById("aftersubmit").style.visibility = "visible";
 
-    //23:50 in video
-    //HOW TO GET FORTUNES TO SHOW UP AT THE END
-    //fortunes is the array of fortunes, found in fortuneTeller.js
-    //range (right now 0) is the index
-    document.getElementById("message").innerHTML = fortunes[0].fortune;
+    //how to make fortunes appear
+    document.getElementById("message").innerHTML = fortunes[range].fortune;
 
     //how to get images to show up with each fortune
     //pictures is an array of picture names, which are in a file in public html
     //range is index
-    document.getElementById("picture").src = pictures[0];
+    document.getElementById("picture").src = pictures[range];
 }
 
 init();
@@ -77,7 +99,7 @@ function addQ(obj, counter) {
     counter = counter + 1;
 
     var field = document.createElement("fieldset");
-    var element = document.getElementById("form");
+    var element = document.getElementById("quiz");
     element.appendChild(field);
 
     var mybr = document.createElement('br');
@@ -88,15 +110,11 @@ function addQ(obj, counter) {
     field.appendChild(question);
 
     obj.option.forEach(function (x) {
-        // counter2 ++;
         var ops = document.createElement("input");
         ops.type = "radio";
-        ops.id = x.value;
-        ops.name = "options" + counter;
-        // ops.value = "som" + counter2;
+        ops.name = "question" + counter;
+        ops.value=x.value;
         field.appendChild(ops);
-
-        console.log(ops.id)
 
         var label = document.createElement("label");
         label.for = ops.id;
@@ -108,20 +126,20 @@ function addQ(obj, counter) {
     })
 }
 
-function getValueOfAnswers(){
-    document.getElementById("s").checked;
-}
+// function getValueOfAnswers(){
+//     document.getElementById("s").checked;
+// }
 
 //not needed? can just do within fortune.js
-function getFortune() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onload = loadFortune;
-    xmlhttp.onerror = function () { alert("Error loading start page") };
-    values = getValueofAnswers;
-    var request = { request: "getFortune", value: values };
-    xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
-    xmlhttp.send();
-}
+// function getFortune() {
+//     var xmlhttp = new XMLHttpRequest();
+//     xmlhttp.onload = loadFortune;
+//     xmlhttp.onerror = function () { alert("Error loading start page") };
+//     values = getValueofAnswers;
+//     var request = { request: "getFortune", value: values };
+//     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
+//     xmlhttp.send();
+// }
 
 // //not needed?
 // function loadFortune() {
