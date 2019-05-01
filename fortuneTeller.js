@@ -64,7 +64,14 @@ var questions = [
     },
     {
         q: "Whatt is your biggest pet peeve?",
-        option: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
+        opti
+        
+        
+        
+        
+        
+        
+        on: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
     },
     {
         q: "What are you most afraid of?",
@@ -91,12 +98,16 @@ var fortunes =
         { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
         { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
         { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
-    ];
+ ];
 
-var pictures =
-    [
-        "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
-    ]
+var pictures =[
+    { fortuneId: 'f1', pic: "img/f1.gif" },
+    { fortuneId: 'f2', pic: "img/f2.gif" }, 
+    { fortuneId: 'f3', pic: "img/f3.gif" },
+    { fortuneId: 'f4', pic: "img/f4.gif" }, 
+    { fortuneId: 'f1', pic: "img/f5.gif" }, 
+    { fortuneId: 'f5', pic: "img/f6.g" }
+];
 
 
 exports.generateQs = function () {
@@ -120,10 +131,8 @@ exports.generateQs = function () {
 }
 
 // function to figure out which fortune to give back to the user
-exports.getFortune = function (values) {
-    // ideally valyes is an array of the answers
-    // ["sad", ""]
-    return fortunes[0].fortune;
+exports.getFortune = function (totalVal) {
+
 };
 
 
