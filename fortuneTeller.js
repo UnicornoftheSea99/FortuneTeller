@@ -64,14 +64,7 @@ var questions = [
     },
     {
         q: "Whatt is your biggest pet peeve?",
-        opti
-        
-        
-        
-        
-        
-        
-        on: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
+        option: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
     },
     {
         q: "What are you most afraid of?",
@@ -100,15 +93,16 @@ var fortunes =
         { fortuneId: 'f5', fortune: 'You got this! Keep your head held up high.' }
     ];
 
-var pictures =[
-    { fortuneId: 'f1', pic: "img/f1.gif" },
-    { fortuneId: 'f2', pic: "img/f2.gif" }, 
-    { fortuneId: 'f3', pic: "img/f3.gif" },
-    { fortuneId: 'f4', pic: "img/f4.gif" }, 
-    { fortuneId: 'f1', pic: "img/f5.gif" }, 
-    { fortuneId: 'f5', pic: "img/f6.g" }
-];
+// var pictures = [
+//     { fortuneId: 'f1', pic: "img/f1.gif" },
+//     { fortuneId: 'f2', pic: "img/f2.gif" },
+//     { fortuneId: 'f3', pic: "img/f3.gif" },
+//     { fortuneId: 'f4', pic: "img/f4.gif" },
+//     { fortuneId: 'f1', pic: "img/f5.gif" },
+//     { fortuneId: 'f5', pic: "img/f6.g" }
+// ];
 
+var pictures = ["img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif", "img/f6.g"];
 
 exports.generateQs = function () {
     choices = [];
@@ -131,23 +125,36 @@ exports.generateQs = function () {
 }
 
 // function to figure out which fortune to give back to the user
-exports.getFortune = function (totalVal) {
-    // if total value of fortune is in the range of .... then return the corresponding 
-    switch(totalVal){
-        case totalVal in Range(10,14) : 
-        return fortunes[1].fortune;
-        case totalVal in Range(16,20) :
-        return fortunes[2].fortune;
-        case totalVal in Range(6,10) :
-        return fortunes[0].fortune;
-        case totalVal in Range(14,16) :
-        return fortunes[3].fortune;
-        case totalVal in Range(20,24) :
-        return fortunes[4].fortune;
+exports.getFortune = function (totalVal) {    
+    //default value
+    i = 4;
 
+     // if total value of fortune is in the range of .... then return the corresponding 
+    if (between(totalVal, 10, 14)) {
+        i = 0;
+    }
     
-      
-    }    
+    if (between(totalVal, 16, 20)){
+        i = 1;
+    }
+    
+    if(between(totalVal, 6, 10)){
+        i = 2;
+    }
+
+    if(between(totalVal, 14, 16)){
+        i = 3;
+    }
+    
+    // if(between(totalVal, 20, 24)) {
+    //     i = 4;
+    // }
+
+    return { fortune: fortunes[i].fortune, pic: pictures[i] };
 };
+
+function between(x, min, max) {
+    return x >= min && x <= max;
+  }
 
 

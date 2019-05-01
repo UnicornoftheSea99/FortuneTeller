@@ -37,7 +37,10 @@ function loadQuestion(res) {
 }
 
 function getFortune(res, query) {
+    console.log(query);
+    console.log(query.value);
     totalVal = query.value;
     fortune = qf.getFortune(totalVal);
+    console.log(fortune);
     utils.sendJSONObj(res, 200, fortune);
 }

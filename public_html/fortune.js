@@ -13,20 +13,20 @@ function check() {
     //Object of fortunes and their values
 
     var q1 = document.quiz.question1.id; //this is the answer client pick to question 1
-    var Q1=parseInt(q1);
+    var Q1 = parseInt(q1);
     var q2 = document.quiz.question2.value;
-    var Q2=parseInt(q2);
+    var Q2 = parseInt(q2);
     var q3 = document.quiz.question3.value;
-    var Q3=parseInt(q3);
+    var Q3 = parseInt(q3);
     var q4 = document.quiz.question4.value;
-    var Q4=parseInt(q4);
+    var Q4 = parseInt(q4);
     var q5 = document.quiz.question5.value;
-    var Q5=parseInt(q5);
+    var Q5 = parseInt(q5);
     var q6 = document.quiz.question6.id;
-    var Q6=parseInt(q6);
+    var Q6 = parseInt(q6);
     console.log("Q1: " + Q1)
     console.log("Q6: " + Q6)
-    
+
 
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
@@ -35,8 +35,8 @@ function check() {
     //add if statements here to set range, which is index of fortunes and pictures
     //example:
     var range;
-    if (totalFortuneValue>=10){
-    range=1;
+    if (totalFortuneValue >= 10) {
+        range = 1;
     }
 
     //makes whatever is in the aftersubmit div in html show up once this function called
@@ -115,15 +115,16 @@ function addQ(obj, counter) {
 function getValueOfAnswers() {
     // query selector loops through all elements that are inputs, with the
     // corresponding name, whether it's selected and saves its id
-    val1 = document.querySelector('input[name="ops1"]:checked').id;
-    val2 = document.querySelector('input[name="ops2"]:checked').id;
-    val3 = document.querySelector('input[name="ops3"]:checked').id;
-    val4 = document.querySelector('input[name="ops4"]:checked').id;
-    val5 = document.querySelector('input[name="ops5"]:checked').id;
-    val6 = document.querySelector('input[name="ops6"]:checked').id;
+    val1 = parseInt(document.querySelector('input[name="ops1"]:checked').id);
+    val2 = parseInt(document.querySelector('input[name="ops2"]:checked').id);
+    val3 = parseInt(document.querySelector('input[name="ops3"]:checked').id);
+    val4 = parseInt(document.querySelector('input[name="ops4"]:checked').id);
+    val5 = parseInt(document.querySelector('input[name="ops5"]:checked').id);
+    val6 = parseInt(document.querySelector('input[name="ops6"]:checked').id);
 
     // return the sum of the values 
-    return totalVal = val1 + val2 + val3 + val4 + val5 + val6;
+    totalVal = val1 + val2 + val3 + val4 + val5 + val6;
+    return totalVal;
 }
 
 //not needed? can just do within fortune.js
@@ -132,8 +133,12 @@ function getFortune() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = loadFortune;
     xmlhttp.onerror = function () { alert("Error loading start page") };
-    totalVal = getValueofAnswers();
+
+    totalVal = getValueOfAnswers();
     var request = { request: "getFortune", value: totalVal };
+
+    // console.log(request)
+
     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
 }
@@ -142,8 +147,21 @@ function getFortune() {
 function loadFortune() {
     if (this.status == 200) {
         // just a string now because i have one question
-        response = this.responseText;
+        response = JSON.parse(this.responseText);
+        showFortune(response);
     }
+}
+
+function showFortune(response) {
+    var fortune = document.createElement("h3");
+    fortune.innerHTML = response.fortune;
+    var div = document.getElementById("div");
+    div.appendChild(fortune);
+
+    var elem = document.createElement("img");
+    elem.setAttribute("src", response.pic);
+    elem.setAttribute("alt", "Flower");
+    div.appendChild(elem);
 }
 
 function queryObjectToString(query) {
@@ -166,4 +184,4 @@ function handleSpaces(str) {
     return newStr;
 }
 
-document.getElementById("HATE").addEvenListener("click", getFortune);
+document.getElementById("HATE").addEventListener("click", getFortune);
