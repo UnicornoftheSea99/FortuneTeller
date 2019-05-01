@@ -105,7 +105,7 @@ exports.generateQs =  function() {
 }
 
 // function to figure out which fortune to give back to the user
-exports.getFortune = function (values) {
+exports.getFortune = function (values) { 
     return fortunes[0].fortune;
 };
 
