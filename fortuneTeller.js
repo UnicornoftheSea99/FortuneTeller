@@ -149,7 +149,6 @@ exports.getFortune = function (totalVal) {
     // if(between(totalVal, 20, 24)) {
     //     i = 4;
     // }
-
     return { fortune: fortunes[i].fortune, pic: pictures[i] };
 };
 

@@ -14,9 +14,9 @@ exports.processQuery = function (query, res) {
         case "getQs":
             loadQuestion(res);
             break;
-        case "getFortune":
-            getFortune(res, query);
-            break;
+        // case "getFortune":
+        //     getFortune(res, query);
+        //     break;
         case "getScore":
             getScore(res, query);
             break;
