@@ -104,10 +104,9 @@ exports.generateQs =  function() {
     return choices;
 }
 
-//functionality moved to fortune.js
-//function to figure out which fortune to give back to the user
-// exports.getFortune = function (values) {
-//     return fortunes[0].fortune;
-// };
+// function to figure out which fortune to give back to the user
+exports.getFortune = function (values) {
+    return fortunes[0].fortune;
+};
 
 

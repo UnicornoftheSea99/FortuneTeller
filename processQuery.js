@@ -3,13 +3,8 @@ var utils = require('./utils.js'),
     qf = require('./fortuneTeller.js'),
     fs = require('fs');
 
-// var swig = require('swig');
-
-// var clientID = 0;
-
-// getting questions 
-// getting fortune
-// getting score 
+// id of the first client
+var currentId = 0;
 
 // save the processQuery function as an export in our module
 exports.processQuery = function (query, res) {
@@ -51,27 +46,3 @@ function getFortune(res, query) {
     fortune = qf.getFortune(values);
     utils.sendJSONObj(res, 200, fortune);
 }
-
-// function generatePage(questions, res) {
-//     swig.renderFile('public_html/index.html', questions, function(err, output){
-//         if (err) {
-//             res.writeHead(404, {'Content-Type':'text/html'});
-//             res.write("Error reading questions page");
-//             res.end();
-//         } else {
-//             // console.log(output);
-//             fs.writeFile('public_html/questions_user'+clientID+'.html', output, function (err) {  
-//                 if (err) {
-//                     res.writeHead(500, {'Content-Type':'text/html'});
-//                     res.write("Error customizing questions page");
-//                     res.end();
-//                 }
-//                 else {
-//                     res.writeHead(200, {'Content-Type':'text/html'});
-//                     res.write('public_html/questions_user'+clientID+'.html');
-//                     res.end();
-//                 }    
-//             }); //writeFile     
-//         }
-//     }); // renderFile
-// }
