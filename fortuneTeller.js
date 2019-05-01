@@ -123,15 +123,15 @@ exports.generateQs = function () {
 exports.getFortune = function (totalVal) {
     // if total value of fortune is in the range of .... then return the corresponding  
     switch(totalVal){
-        case totalVal in Range(10,14) : 
+        case totalVal in range(10,14) : 
         return fortunes[1].fortune;
-        case totalVal in Range(16,20) :
+        case totalVal in range(16,20) :
         return fortunes[2].fortune;
-        case totalVal in Range(6,10) :
+        case totalVal in range(6,10) :
         return fortunes[0].fortune;
-        case totalVal in Range(14,16) :
+        case totalVal in range(14,16) :
         return fortunes[3].fortune;
-        case totalVal in Range(20,24) :
+        case totalVal in range(20,24) :
         return fortunes[4].fortune;
 
     
