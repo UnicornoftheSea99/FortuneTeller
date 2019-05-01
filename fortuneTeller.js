@@ -94,11 +94,11 @@ var questions = [
 var fortunes =
     [
         { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
-        { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.' },
+        { fortuneId: 'f2', fortune: 'You are a happy person. Keep doing you, boo.' },
         { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
         { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
-        { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
- ];
+        { fortuneId: 'f5', fortune: 'You got this! Keep your head held up high.' }
+    ];
 
 var pictures =[
     { fortuneId: 'f1', pic: "img/f1.gif" },
@@ -132,7 +132,22 @@ exports.generateQs = function () {
 
 // function to figure out which fortune to give back to the user
 exports.getFortune = function (totalVal) {
+    // if total value of fortune is in the range of .... then return the corresponding 
+    switch(totalVal){
+        case totalVal in Range(10,14) : 
+        return fortunes[1].fortune;
+        case totalVal in Range(16,20) :
+        return fortunes[2].fortune;
+        case totalVal in Range(6,10) :
+        return fortunes[0].fortune;
+        case totalVal in Range(14,16) :
+        return fortunes[3].fortune;
+        case totalVal in Range(20,24) :
+        return fortunes[4].fortune;
 
+    
+      
+    }    
 };
 
 
