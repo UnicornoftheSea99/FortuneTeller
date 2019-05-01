@@ -26,7 +26,7 @@ function check() {
     // var Q6=parseInt(q6);
 
     //total value from the responses of each answer
-    // var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
+    var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
 
     //add if statements here to set range, which is index of fortunes and pictures
     //example:
