@@ -141,6 +141,7 @@ function addQ(obj, counter) {
 }
 
 
+
 // function getValueOfAnswers() {
 //     // query selector loops through all elements that are inputs, with the
 //     // corresponding name, whether it's selected and saves its id
@@ -166,6 +167,7 @@ function addQ(obj, counter) {
 //     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
 //     xmlhttp.send();
 // }
+
 
 
 //not needed?
