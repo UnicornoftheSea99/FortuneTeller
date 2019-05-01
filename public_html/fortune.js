@@ -28,20 +28,52 @@ function check() {
 
     var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
     var Q1=parseInt(q1);
+    if (isNaN(Q1)==true){
+        var Q1=0;
+    }
     var q2 = document.quiz.question2.value;
     var Q2=parseInt(q2);
+    if (isNaN(Q2)==true){
+        var Q2=0;
+    }
     var q3 = document.quiz.question3.value;
     var Q3=parseInt(q3);
+    if (isNaN(Q3)==true){
+        var Q3=0;
+    }
     var q4 = document.quiz.question4.value;
     var Q4=parseInt(q4);
+    if (isNaN(Q4)==true){
+        var Q4=0;
+    }
     var q5 = document.quiz.question5.value;
     var Q5=parseInt(q5);
+    if (isNaN(Q5)==true){
+        var Q5=0;
+    }
     var q6 = document.quiz.question6.value;
     var Q6=parseInt(q6);
+    if (isNaN(Q6)==true){
+        var Q6=0;
+    }
 
     console.log("Q1: " + Q1)
+    console.log("Q2: " + Q2)
+    console.log("Q3: " + Q3)
+    console.log("Q4: " + Q4)
+    console.log("Q5: " + Q5)
     console.log("Q6: " + Q6)
     
+//    var scores= {Q1,Q2,Q3,Q4,Q5,Q6};
+//    //console.log(scores[1]);
+//    for (q in scores){
+//        console.log(q);
+//        if (isNaN(q)==true){
+//            if (q=="Q1"){
+//             var Q1=0;
+//            }
+//         }
+//    }
 
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
