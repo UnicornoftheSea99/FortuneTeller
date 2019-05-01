@@ -9,6 +9,7 @@
 //https://tenor.com/view/fit-personalpenguintrainer-penguin-trainer-healthylifestyle-gif-4817050
 
 //this is what happens after client clicks submit button
+
 function check() {
     //Object of fortunes and their values
     var fortunes =
@@ -72,6 +73,7 @@ function check() {
     document.getElementById("picture").src = pictures[range];
 }
 
+
 init();
 
 function init() {
@@ -112,8 +114,14 @@ function addQ(obj, counter) {
     obj.option.forEach(function (x) {
         var ops = document.createElement("input");
         ops.type = "radio";
+
         ops.name = "question" + counter;
         ops.value=x.value;
+
+//         ops.id = x.value;
+//         ops.name = "ops" + counter;
+   
+
         field.appendChild(ops);
 
         var label = document.createElement("label");
@@ -126,12 +134,24 @@ function addQ(obj, counter) {
     })
 }
 
-// function getValueOfAnswers(){
-//     document.getElementById("s").checked;
+
+// function getValueOfAnswers() {
+//     // query selector loops through all elements that are inputs, with the
+//     // corresponding name, whether it's selected and saves its id
+//     val1 = document.querySelector('input[name="ops1"]:checked').id;
+//     val2 = document.querySelector('input[name="ops2"]:checked').id;
+//     val3 = document.querySelector('input[name="ops3"]:checked').id;
+//     val4 = document.querySelector('input[name="ops4"]:checked').id;
+//     val5 = document.querySelector('input[name="ops5"]:checked').id;
+//     val6 = document.querySelector('input[name="ops6"]:checked').id;
+
+//     return totalVal = val1 + val2 + val3 + val4 + val5 + val6;
 // }
 
-//not needed? can just do within fortune.js
+
+
 // function getFortune() {
+//     console.log("we're in here too")
 //     var xmlhttp = new XMLHttpRequest();
 //     xmlhttp.onload = loadFortune;
 //     xmlhttp.onerror = function () { alert("Error loading start page") };
@@ -141,7 +161,8 @@ function addQ(obj, counter) {
 //     xmlhttp.send();
 // }
 
-// //not needed?
+
+//not needed?
 // function loadFortune() {
 //     if (this.status == 200) {
 //         // just a string now because i have one question
@@ -168,3 +189,5 @@ function handleSpaces(str) {
     }
     return newStr;
 }
+
+//document.getElementById("HATE").addEvenListener("click", getFortune);
