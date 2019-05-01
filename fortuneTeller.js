@@ -84,28 +84,45 @@ var questions = [
     }
 ]
 
-exports.generateQs =  function() {
+var fortunes =
+    [
+        { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
+        { fortuneId: 'f2', fortune: 'You are a happy person. Kepp doing you, boo.' },
+        { fortuneId: 'f3', fortune: 'You are a sad cow. Treat yourself to something nice. ' },
+        { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
+        { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
+    ];
+
+var pictures =
+    [
+        "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
+    ]
+
+
+exports.generateQs = function () {
     choices = [];
     numbers = [];
-    
+
     // choose six questions
     while (choices.length < 6) {
         console.log(choices.length);
         magicNumber = Math.floor(Math.random() * 20);
         console.log(magicNumber);
-        if(numbers.indexOf(magicNumber) < 0){
+        if (numbers.indexOf(magicNumber) < 0) {
             choices.push(questions[magicNumber]);
             numbers.push(magicNumber);
         }
     }
-    
+
     // return choices;
     // console.log(choices)
     return choices;
 }
 
 // function to figure out which fortune to give back to the user
-exports.getFortune = function (values) { 
+exports.getFortune = function (values) {
+    // ideally valyes is an array of the answers
+    // ["sad", ""]
     return fortunes[0].fortune;
 };
 
