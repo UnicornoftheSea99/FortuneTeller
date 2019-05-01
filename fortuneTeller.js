@@ -64,14 +64,7 @@ var questions = [
     },
     {
         q: "Whatt is your biggest pet peeve?",
-        opti
-        
-        
-        
-        
-        
-        
-        on: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
+        option: [{ a: "Loud chewing", value: 4 }, { b: "Bad grammar", value: 3 }, { c: "Talking in a quiet place", value: 2 }, { d: "People who talk too slow", value: 1 }]
     },
     {
         q: "What are you most afraid of?",
