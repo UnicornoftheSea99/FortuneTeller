@@ -14,11 +14,8 @@ exports.processQuery = function (query, res) {
         case "getQs":
             loadQuestion(res);
             break;
-        // case "getFortune":
-        //     getFortune(res, query);
-        //     break;
-        case "getScore":
-            getScore(res, query);
+        case "getFortune":
+            getFortune(res, query);
             break;
         default:
             // report error for any other query 
@@ -37,10 +34,7 @@ function loadQuestion(res) {
 }
 
 function getFortune(res, query) {
-    console.log(query);
-    console.log(query.value);
     totalVal = query.value;
     fortune = qf.getFortune(totalVal);
-    console.log(fortune);
     utils.sendJSONObj(res, 200, fortune);
 }

@@ -1,14 +1,14 @@
-//Client Side
-//Emily
+// Client Side
+// Emily
 
-//Image Sources
-//https://tenor.com/view/dontworry-behappy-advice-smile-love-gif-4513921
-//https://weheartit.com/chati_compartir_6/collections/111201363-gif
-//https://gifer.com/en/DW0Q
-//https://giphy.com/gifs/art-cute-penguin-1isg011pZn7LSIh4ig
-//https://tenor.com/view/fit-personalpenguintrainer-penguin-trainer-healthylifestyle-gif-4817050
+// Image Sources
+// https://tenor.com/view/dontworry-behappy-advice-smile-love-gif-4513921
+// https://weheartit.com/chati_compartir_6/collections/111201363-gif
+// https://gifer.com/en/DW0Q
+// https://giphy.com/gifs/art-cute-penguin-1isg011pZn7LSIh4ig
+// https://tenor.com/view/fit-personalpenguintrainer-penguin-trainer-healthylifestyle-gif-4817050
 
-//this is what happens after client clicks submit button
+// this is what happens after client clicks submit button
 
 // function check() {
 //     //Object of fortunes and their values
@@ -63,7 +63,7 @@
 //     console.log("Q4: " + Q4)
 //     console.log("Q5: " + Q5)
 //     console.log("Q6: " + Q6)
-    
+
 // //    var scores= {Q1,Q2,Q3,Q4,Q5,Q6};
 // //    //console.log(scores[1]);
 // //    for (q in scores){
@@ -154,11 +154,11 @@ function addQ(obj, counter) {
         ops.type = "radio";
 
         ops.name = "question" + counter;
-        ops.value=x.value;
+        ops.value = x.value;
 
-//         ops.id = x.value;
-//         ops.name = "ops" + counter;
-   
+        //         ops.id = x.value;
+        //         ops.name = "ops" + counter;
+
 
         field.appendChild(ops);
 
@@ -175,14 +175,28 @@ function addQ(obj, counter) {
 function getValueOfAnswers() {
     // query selector loops through all elements that are inputs, with the
     // corresponding name, whether it's selected and saves its id
-    val1 = parseInt(document.querySelector('input[name="ops1"]:checked').id);
-    val2 = parseInt(document.querySelector('input[name="ops2"]:checked').id);
-    val3 = parseInt(document.querySelector('input[name="ops3"]:checked').id);
-    val4 = parseInt(document.querySelector('input[name="ops4"]:checked').id);
-    val5 = parseInt(document.querySelector('input[name="ops5"]:checked').id);
-    val6 = parseInt(document.querySelector('input[name="ops6"]:checked').id);
+    val1 = document.querySelector('input[name="ops1"]:checked');
+    val2 = document.querySelector('input[name="ops2"]:checked');
+    val3 = document.querySelector('input[name="ops3"]:checked');
+    val4 = document.querySelector('input[name="ops4"]:checked');
+    val5 = document.querySelector('input[name="ops5"]:checked');
+    val6 = document.querySelector('input[name="ops6"]:checked');
 
-    // return the sum of the values 
+    vals = [val1, val2, val3, val4, val5, val6]
+
+    console.log(val1)
+
+    vals.forEach(function (x) {
+        if (!x) {
+            // exit if one value is null
+            return;
+        }
+
+        // change its id to a number and save
+        x = parseInt(x.id);
+    });
+
+    // find some of all values and return
     totalVal = val1 + val2 + val3 + val4 + val5 + val6;
     return totalVal;
 }
@@ -195,9 +209,14 @@ function getFortune() {
     xmlhttp.onerror = function () { alert("Error loading start page") };
 
     totalVal = getValueOfAnswers();
-    var request = { request: "getFortune", value: totalVal };
 
-    // console.log(request)
+    if (!totalVal) {
+        // alert client and exit
+        alert("You have to answer all questions!");
+        return;
+    }
+
+    var request = { request: "getFortune", value: totalVal };
 
     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
@@ -244,4 +263,4 @@ function handleSpaces(str) {
     return newStr;
 }
 
-document.getElementById("HATE").addEventListener("click", getFortune);
+document.getElementById("button").addEventListener("click", getFortune);
