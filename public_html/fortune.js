@@ -50,19 +50,19 @@ function check() {
 
     //figure out which fortune
     var range;
-    if (totalFortuneValue<=5){
+    if ((totalFortuneValue<=10)){
         range=0;
     }
-    if (totalFortuneValue<=10 && totalFortuneValue>5){
+    if (totalFortuneValue<=14 && totalFortuneValue>10){
         range=1;
     }
-    if (totalFortuneValue<=15 && totalFortuneValue>10){
+    if (totalFortuneValue<=18 && totalFortuneValue>14){
         range=2;
     }
-    if (totalFortuneValue<=20 && totalFortuneValue>15){
+    if (totalFortuneValue<=22 && totalFortuneValue>18){
         range=3;
     }
-    if (totalFortuneValue<25 && totalFortuneValue>20){
+    if (totalFortuneValue<25 && totalFortuneValue>22){
         range=4;
 
     }
