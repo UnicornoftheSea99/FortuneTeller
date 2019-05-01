@@ -30,7 +30,7 @@ function check() {
 
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
-    console.log(Q1 +Q6);
+
 
     //add if statements here to set range, which is index of fortunes and pictures
     //example:
@@ -96,7 +96,7 @@ function addQ(obj, counter) {
         var ops = document.createElement("input");
         ops.type = "radio";
         ops.id = x.value;
-        ops.name = "question" + counter;
+        ops.name = "ops" + counter;
         // ops.value = "som" + counter2;
         field.appendChild(ops);
 
@@ -112,12 +112,23 @@ function addQ(obj, counter) {
     })
 }
 
-function getValueOfAnswers(){
-    document.getElementById("s").checked;
+function getValueOfAnswers() {
+    // query selector loops through all elements that are inputs, with the
+    // corresponding name, whether it's selected and saves its id
+    val1 = document.querySelector('input[name="ops1"]:checked').id;
+    val2 = document.querySelector('input[name="ops2"]:checked').id;
+    val3 = document.querySelector('input[name="ops3"]:checked').id;
+    val4 = document.querySelector('input[name="ops4"]:checked').id;
+    val5 = document.querySelector('input[name="ops5"]:checked').id;
+    val6 = document.querySelector('input[name="ops6"]:checked').id;
+
+    return totalVal = val1 + val2 + val3 + val4 + val5 + val6;
 }
+
 
 //not needed? can just do within fortune.js
 function getFortune() {
+    console.log("we're in here too")
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = loadFortune;
     xmlhttp.onerror = function () { alert("Error loading start page") };
@@ -127,13 +138,13 @@ function getFortune() {
     xmlhttp.send();
 }
 
-// //not needed?
-// function loadFortune() {
-//     if (this.status == 200) {
-//         // just a string now because i have one question
-//         response = this.responseText;
-//     }
-// }
+//not needed?
+function loadFortune() {
+    if (this.status == 200) {
+        // just a string now because i have one question
+        response = this.responseText;
+    }
+}
 
 function queryObjectToString(query) {
     // console.log(query);
@@ -154,3 +165,5 @@ function handleSpaces(str) {
     }
     return newStr;
 }
+
+document.getElementById("HATE").addEvenListener("click", getFortune);
