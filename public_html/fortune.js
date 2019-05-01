@@ -39,9 +39,14 @@ function check() {
     var q6 = document.quiz.question6.value;
     var Q6=parseInt(q6);
 
+    console.log("Q1: " + Q1)
+    console.log("Q6: " + Q6)
+    
+
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
     console.log("total value is"+ totalFortuneValue);
+
 
     //figure out which fortune
     var range;
@@ -59,6 +64,7 @@ function check() {
     }
     if (totalFortuneValue<25 && totalFortuneValue>20){
         range=4;
+
     }
 
     //makes whatever is in the aftersubmit div in html show up once this function called
