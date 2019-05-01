@@ -14,9 +14,9 @@ exports.processQuery = function (query, res) {
         case "getQs":
             loadQuestion(res);
             break;
-        case "getFortune":
-            getFortune(res, query);
-            break;
+        // case "getFortune":
+        //     getFortune(res, query);
+        //     break;
         case "getScore":
             getScore(res, query);
             break;
@@ -32,17 +32,14 @@ function loadQuestion(res) {
     // generate questions
     questions = qf.generateQs();
 
-    // console.log("these are the question", questions)
-
-    // generate page 
-    // generatePage(questions, res);
-
     // send the questions generated to client
     utils.sendJSONObj(res, 200, questions);
 }
 
-function getFortune(res, query) {
-    values = query.value;
-    fortune = qf.getFortune(values);
-    utils.sendJSONObj(res, 200, fortune);
-}
+
+// function getFortune(res, query) {
+//     totalVal = query.value;
+//     fortune = qf.getFortune(totalVal);
+//     utils.sendJSONObj(res, 200, fortune);
+// }
+
