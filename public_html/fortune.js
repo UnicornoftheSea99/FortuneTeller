@@ -12,28 +12,32 @@
 function check() {
     //Object of fortunes and their values
 
-    // var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
-    //var Q1=parseInt(q1);
-    // var q2 = document.quiz.question2.value;
-    // var Q2=parseInt(q2);
-    // var q3 = document.quiz.question3.value;
-    // var Q3=parseInt(q3);
-    // var q4 = document.quiz.question4.value;
-    // var Q4=parseInt(q4);
-    // var q5 = document.quiz.question5.value;
-    // var Q5=parseInt(q5);
-    // var q6 = document.quiz.question6.value;
-    // var Q6=parseInt(q6);
+    var q1 = document.quiz.question1.id; //this is the answer client pick to question 1
+    var Q1=parseInt(q1);
+    var q2 = document.quiz.question2.value;
+    var Q2=parseInt(q2);
+    var q3 = document.quiz.question3.value;
+    var Q3=parseInt(q3);
+    var q4 = document.quiz.question4.value;
+    var Q4=parseInt(q4);
+    var q5 = document.quiz.question5.value;
+    var Q5=parseInt(q5);
+    var q6 = document.quiz.question6.id;
+    var Q6=parseInt(q6);
+    console.log("Q1: " + Q1)
+    console.log("Q6: " + Q6)
+    
 
     //total value from the responses of each answer
-    // var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
+    var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
+    console.log(Q1 +Q6);
 
     //add if statements here to set range, which is index of fortunes and pictures
     //example:
-    //var range;
-    //if (totalFortuneValue>=10){
-    //range=1;
-    //}
+    var range;
+    if (totalFortuneValue>=10){
+    range=1;
+    }
 
     //makes whatever is in the aftersubmit div in html show up once this function called
     document.getElementById("aftersubmit").style.visibility = "visible";
@@ -92,7 +96,7 @@ function addQ(obj, counter) {
         var ops = document.createElement("input");
         ops.type = "radio";
         ops.id = x.value;
-        ops.name = "options" + counter;
+        ops.name = "question" + counter;
         // ops.value = "som" + counter2;
         field.appendChild(ops);
 
