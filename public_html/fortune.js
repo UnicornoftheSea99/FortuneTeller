@@ -123,7 +123,8 @@ function getValueOfAnswers() {
     val6 = document.querySelector('input[name="ops6"]:checked').id;
 
     return totalVal = val1 + val2 + val3 + val4 + val5 + val6;
-}
+} 
+
 
 
 //not needed? can just do within fortune.js
@@ -132,7 +133,7 @@ function getFortune() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = loadFortune;
     xmlhttp.onerror = function () { alert("Error loading start page") };
-    values = getValueofAnswers;
+    values = getValueOfAnswers;
     var request = { request: "getFortune", value: values };
     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
@@ -166,4 +167,4 @@ function handleSpaces(str) {
     return newStr;
 }
 
-document.getElementById("HATE").addEvenListener("click", getFortune);
+document.getElementById("HATE").addEventListener("click", getFortune);

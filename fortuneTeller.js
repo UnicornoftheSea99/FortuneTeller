@@ -121,7 +121,7 @@ exports.generateQs = function () {
 
 // function to figure out which fortune to give back to the user
 exports.getFortune = function (totalVal) {
-    // if total value of fortune is in the range of .... then return the corresponding 
+    // if total value of fortune is in the range of .... then return the corresponding  
     switch(totalVal){
         case totalVal in Range(10,14) : 
         return fortunes[1].fortune;
