@@ -1,5 +1,7 @@
 //fortuneTeller.js
-//fucntion that contains fortunes and assigns values to each one
+//array that holds all question objects that can be given back to the client to answer, upon request
+//each quetions object contains the question and a set of options the client can choose from to answer it
+//each option is given a value that wil be used to find a final totalValue so we can match it to its corresponding fortune.
 var questions = [
     {
         q: "How do you feel today?",
@@ -83,7 +85,7 @@ var questions = [
         option: [{ a: "fish", value: 3 }, { b: "cat", value: 2 }, { c: "bird", value: 4 }, { d: "cameleon", value: 1 }]
     }
 ]
-
+//an array that holds all the possible fortunes that the client could recieve upon answering all questions given to them.
 var fortunes =
     [
         { fortuneId: 'f1', fortune: 'Do not worry too much. Be happy.' },
@@ -92,21 +94,22 @@ var fortunes =
         { fortuneId: 'f4', fortune: 'You seem unsure of yourself. Try meditating for 5 min every night.' },
         { fortuneId: 'f5', fortune: 'You got this! Keep your head held up high.' }
     ];
-
+//an array that holds a set of gifs that correspond to the a particular fortune and will be delivered together with the fortune.
 var pictures = ["img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif", "img/f6.g"];
 
-exports.generateQs = function () {
-    choices = [];
+//function that exports the 
+exports.generateQs = function () { 
+    choices = []; //empty array that will hold the 
     numbers = [];
 
     // choose six questions
-    while (choices.length < 6) {
+    while (choices.length < 6) { //while our array of 
         console.log(choices.length);
         magicNumber = Math.floor(Math.random() * 20);
         console.log(magicNumber);
         if (numbers.indexOf(magicNumber) < 0) {
-            choices.push(questions[magicNumber]);
-            numbers.push(magicNumber);
+            choices.push(questions[magicNumber]); //adds the question to the choices array that will be given to the client
+            numbers.push(magicNumber); //adds the random number generated to the numbers array to ensure we don't get any repeats of the same question.
         }
     }
 
