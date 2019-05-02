@@ -99,8 +99,8 @@ var pictures = ["img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.
 
 //function that exports the 
 exports.generateQs = function () { 
-    choices = []; //empty array that will hold the 
-    numbers = [];
+    choices = []; //empty array that will hold the questions given to the client to answer
+    numbers = [];//empty array that will hold the random numbers generated so that we do not pick a question from the questions array at that index.
 
     // choose six questions
     while (choices.length < 6) { //while our array of 
@@ -113,9 +113,7 @@ exports.generateQs = function () {
         }
     }
 
-    // return choices;
-    // console.log(choices)
-    return choices;
+    return choices; //returns the array, now filled with 6 unique questions back to the client to answer.
 }
 
 // function to figure out which fortune to give back to the user
@@ -144,10 +142,10 @@ exports.getFortune = function (totalVal) {
     //     i = 4;
     // }
 
-    return { fortune: fortunes[i].fortune, pic: pictures[i] };
+    return { fortune: fortunes[i].fortune, pic: pictures[i] }; // returns the fortune and fortune gif 
 };
 
-function between(x, min, max) {
+function between(x, min, max) { // checks whether x is between two values, returns true or false
     return x >= min && x <= max;
 }
 
