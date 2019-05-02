@@ -1,15 +1,14 @@
-//Client Side
-//Emily
+// Client Side
+// Emily
 
-//Image Sources
-//https://tenor.com/view/dontworry-behappy-advice-smile-love-gif-4513921
-//https://weheartit.com/chati_compartir_6/collections/111201363-gif
-//https://gifer.com/en/DW0Q
-//https://giphy.com/gifs/art-cute-penguin-1isg011pZn7LSIh4ig
-//https://tenor.com/view/fit-personalpenguintrainer-penguin-trainer-healthylifestyle-gif-4817050
+// Image Sources
+// https://tenor.com/view/dontworry-behappy-advice-smile-love-gif-4513921
+// https://weheartit.com/chati_compartir_6/collections/111201363-gif
+// https://gifer.com/en/DW0Q
+// https://giphy.com/gifs/art-cute-penguin-1isg011pZn7LSIh4ig
+// https://tenor.com/view/fit-personalpenguintrainer-penguin-trainer-healthylifestyle-gif-4817050
 
-//this is what happens after client clicks submit button
-
+// this is what happens after client clicks submit button
 function check() {
     //Object of fortunes and their values
     var fortunes =
@@ -28,20 +27,52 @@ function check() {
 
     var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
     var Q1=parseInt(q1);
+    if (isNaN(Q1)){
+        var Q1=0;
+    }
     var q2 = document.quiz.question2.value;
     var Q2=parseInt(q2);
+    if (isNaN(Q2)){
+        var Q2=0;
+    }
     var q3 = document.quiz.question3.value;
     var Q3=parseInt(q3);
+    if (isNaN(Q3)){
+        var Q3=0;
+    }
     var q4 = document.quiz.question4.value;
     var Q4=parseInt(q4);
+    if (isNaN(Q4)){
+        var Q4=0;
+    }
     var q5 = document.quiz.question5.value;
     var Q5=parseInt(q5);
+    if (isNaN(Q5)){
+        var Q5=0;
+    }
     var q6 = document.quiz.question6.value;
     var Q6=parseInt(q6);
+    if (isNaN(Q6)){
+        var Q6=0;
+    }
 
     console.log("Q1: " + Q1)
+    console.log("Q2: " + Q2)
+    console.log("Q3: " + Q3)
+    console.log("Q4: " + Q4)
+    console.log("Q5: " + Q5)
     console.log("Q6: " + Q6)
-    
+
+//    var scores= {Q1,Q2,Q3,Q4,Q5,Q6};
+//    //console.log(scores[1]);
+//    for (q in scores){
+//        console.log(q);
+//        if (isNaN(q)==true){
+//            if (q=="Q1"){
+//             var Q1=0;
+//            }
+//         }
+//    }
 
     //total value from the responses of each answer
     var totalFortuneValue = (Q1 + Q2 + Q3 + Q4 + Q5 + Q6);
@@ -79,104 +110,167 @@ function check() {
     document.getElementById("picture").src = pictures[range];
 }
 
-
+// start init function the moment the page starts
 init();
 
 function init() {
     console.log("we're here")
+
+    // create new AJAX object
     var xmlhttp = new XMLHttpRequest();
+
+    // call the loadQ function once it's loaded
     xmlhttp.onload = loadQs;
+
+    // error handling
     xmlhttp.onerror = function () { alert("Error loading start page") };
+
+    // send server the getQs request 
     var request = { request: "getQs" };
     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
     xmlhttp.send();
 }
-
+// load questions onto page
 function loadQs() {
-    // load designed page 
+    // if the ajax status is a success
     if (this.status == 200) {
+        // parse it to be an object
         response = JSON.parse(this.responseText);
+        // initialize this variable at 1 to be used to later
         counter = 0;
         response.forEach(addQ, counter);
     }
 
+    // error handling
     else alert("Error loading question");
 }
 
+// function to add questions to html
 function addQ(obj, counter) {
-    counter = counter + 1;
+    // increment counter
+    counter ++;
 
+    // insert a fieldset to our first div
     var field = document.createElement("fieldset");
     var element = document.getElementById("quiz");
     element.appendChild(field);
 
+    // insert a break
     var mybr = document.createElement('br');
     element.appendChild(mybr);
 
+    // insert a legend and add our question (from the server's response)
+    // as its innerHTML
     var question = document.createElement("legend");
     question.innerHTML = obj.q;
     field.appendChild(question);
 
+    // loop through each set of answers and 
+    // to page for every question
     obj.option.forEach(function (x) {
+        // insert inputas a radio button
         var ops = document.createElement("input");
         ops.type = "radio";
 
+        // make sure each has a unique name 
         ops.name = "question" + counter;
-        ops.value=x.value;
-
-//         ops.id = x.value;
-//         ops.name = "ops" + counter;
-   
-
+        // add the value field of server response to input as a value
+        ops.value = x.value;
+        // ops.id = x.value;
+        // ops.name = "ops" + counter;
         field.appendChild(ops);
 
+        // insert label to input we just created
         var label = document.createElement("label");
         label.for = ops.id;
         label.innerHTML = x[Object.keys(x)[0]];
         field.appendChild(label);
 
+        // insert another break
         var br = document.createElement("br");
         field.appendChild(br);
     })
 }
 
-
+/**
+ * The following commented code is the server and client side
+ * version of generating fortunes for client
+ */
 
 // function getValueOfAnswers() {
 //     // query selector loops through all elements that are inputs, with the
 //     // corresponding name, whether it's selected and saves its id
-//     val1 = document.querySelector('input[name="ops1"]:checked').id;
-//     val2 = document.querySelector('input[name="ops2"]:checked').id;
-//     val3 = document.querySelector('input[name="ops3"]:checked').id;
-//     val4 = document.querySelector('input[name="ops4"]:checked').id;
-//     val5 = document.querySelector('input[name="ops5"]:checked').id;
-//     val6 = document.querySelector('input[name="ops6"]:checked').id;
+//     val1 = document.querySelector('input[name="ops1"]:checked');
+//     val2 = document.querySelector('input[name="ops2"]:checked');
+//     val3 = document.querySelector('input[name="ops3"]:checked');
+//     val4 = document.querySelector('input[name="ops4"]:checked');
+//     val5 = document.querySelector('input[name="ops5"]:checked');
+//     val6 = document.querySelector('input[name="ops6"]:checked');
 
-//     return totalVal = val1 + val2 + val3 + val4 + val5 + val6;
+//     vals = [val1, val2, val3, val4, val5, val6]
+
+//     console.log(val1)
+
+//     vals.forEach(function (x) {
+//         if (!x.id) {
+//             // exit if one value is null
+//             return;
+//         }
+
+//         // change its id to a number and save
+//         x = parseInt(x.id);
+//     });
+
+//     console.log(vals);
+
+//     // find some of all values and return
+//     totalVal = val1 + val2 + val3 + val4 + val5 + val6;
+//     return totalVal;
 // }
 
-
-
+//not needed? can just do within fortune.js
 // function getFortune() {
 //     console.log("we're in here too")
 //     var xmlhttp = new XMLHttpRequest();
 //     xmlhttp.onload = loadFortune;
 //     xmlhttp.onerror = function () { alert("Error loading start page") };
-//     values = getValueofAnswers;
-//     var request = { request: "getFortune", value: values };
+
+//     if (!getValueOfAnswers) {
+//         // alert client and exit
+//         alert("You have to answer all questions!");
+//         return;
+//     }
+
+//     totalVal = getValueOfAnswers();
+
+//     var request = { request: "getFortune", value: totalVal };
+
 //     xmlhttp.open("GET", "http://localhost:8080/?" + queryObjectToString(request));
 //     xmlhttp.send();
 // }
 
-
-
-//not needed?
+// //not needed?
 // function loadFortune() {
 //     if (this.status == 200) {
 //         // just a string now because i have one question
-//         response = this.responseText;
+//         response = JSON.parse(this.responseText);
+//         showFortune(response);
 //     }
 // }
+
+// function showFortune(response) {
+//     var fortune = document.createElement("h3");
+//     fortune.innerHTML = response.fortune;
+//     var div = document.getElementById("div");
+//     div.appendChild(fortune);
+
+//     var elem = document.createElement("img");
+//     elem.setAttribute("src", response.pic);
+//     elem.setAttribute("alt", "Flower");
+//     div.appendChild(elem);
+// }
+
+///////////////////////////////////////////////////////////
 
 function queryObjectToString(query) {
     // console.log(query);
@@ -198,4 +292,4 @@ function handleSpaces(str) {
     return newStr;
 }
 
-//document.getElementById("HATE").addEvenListener("click", getFortune);
+document.getElementById("button").addEventListener("click", getFortune);
