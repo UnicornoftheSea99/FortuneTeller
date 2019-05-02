@@ -1,5 +1,4 @@
 // Client Side
-// Emily
 
 // Image Sources
 // https://tenor.com/view/dontworry-behappy-advice-smile-love-gif-4513921
@@ -20,42 +19,43 @@ function check() {
         { fortuneId: 'f5', fortune: 'You got this! Exercise is a great way to keep your body happy.' }
     ];
 
-    var pictures =
+    var pictures = //array of gifs that will display alongside its corresponding fortune
     [
         "img/f1.gif", "img/f2.gif", "img/f3.gif", "img/f4.gif", "img/f5.gif"
     ]
 
-    var q1 = document.quiz.question1.value; //this is the answer client pick to question 1
-    var Q1=parseInt(q1);
-    if (isNaN(Q1)){
+    var q1 = document.quiz.question1.value; //the answer the client picked to question 1
+    var Q1=parseInt(q1); //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q1)){  //sets value of a question equal to zero if no question was picked
         var Q1=0;
     }
-    var q2 = document.quiz.question2.value;
-    var Q2=parseInt(q2);
-    if (isNaN(Q2)){
+    var q2 = document.quiz.question2.value; //the answer the client picked to question 2
+    var Q2=parseInt(q2);  //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q2)){  //sets value of a question equal to zero if no question was picked
         var Q2=0;
     }
-    var q3 = document.quiz.question3.value;
-    var Q3=parseInt(q3);
-    if (isNaN(Q3)){
+    var q3 = document.quiz.question3.value; //the answer the client picked to question 3
+    var Q3=parseInt(q3);  //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q3)){  //sets value of a question equal to zero if no question was picked
         var Q3=0;
     }
-    var q4 = document.quiz.question4.value;
-    var Q4=parseInt(q4);
-    if (isNaN(Q4)){
+    var q4 = document.quiz.question4.value; //the answer the client picked to question 4
+    var Q4=parseInt(q4);  //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q4)){  //sets value of a question equal to zero if no question was picked
         var Q4=0;
     }
-    var q5 = document.quiz.question5.value;
-    var Q5=parseInt(q5);
-    if (isNaN(Q5)){
+    var q5 = document.quiz.question5.value; //the answer the client picked to question 5
+    var Q5=parseInt(q5);  //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q5)){   //sets value of a question equal to zero if no question was picked
         var Q5=0;
     }
-    var q6 = document.quiz.question6.value;
-    var Q6=parseInt(q6);
-    if (isNaN(Q6)){
+    var q6 = document.quiz.question6.value; //the answer the client picked to question 6
+    var Q6=parseInt(q6); //sets value equal to an integer so that we can add up the score later
+    if (isNaN(Q6)){  //sets value of a question equal to zero if no question was picked
         var Q6=0;
     }
 
+    //checks the value for each question
     console.log("Q1: " + Q1)
     console.log("Q2: " + Q2)
     console.log("Q3: " + Q3)
@@ -63,11 +63,11 @@ function check() {
     console.log("Q5: " + Q5)
     console.log("Q6: " + Q6)
 
-//    var scores= {Q1,Q2,Q3,Q4,Q5,Q6};
+//    var scores= {Q1,Q2,Q3,Q4,Q5,Q6};   //list of individual values from the answer they responded to the question with
 //    //console.log(scores[1]);
 //    for (q in scores){
 //        console.log(q);
-//        if (isNaN(q)==true){
+//        if (isNaN(q)==true){ //sets value of a question equal to zero if no question was picked
 //            if (q=="Q1"){
 //             var Q1=0;
 //            }
@@ -79,7 +79,7 @@ function check() {
     console.log("total value is"+ totalFortuneValue);
 
 
-    //figure out which fortune
+    //figures out which fortune to give the client back by checking if it between two other values
     var range;
     if ((totalFortuneValue<=10)){
         range=0;
@@ -110,11 +110,10 @@ function check() {
     document.getElementById("picture").src = pictures[range];
 }
 
-// start init function the moment the page starts
+// start init function the moment the page is first loaded
 init();
 
 function init() {
-    console.log("we're here")
 
     // create new AJAX object
     var xmlhttp = new XMLHttpRequest();
@@ -272,7 +271,7 @@ function addQ(obj, counter) {
 
 ///////////////////////////////////////////////////////////
 
-function queryObjectToString(query) {
+function queryObjectToString(query) { //converts query object to string so that we are able to read it
     // console.log(query);
     var properties = Object.keys(query);
     var arrOfQuesryStrings = properties.map(prop => prop + "=" + handleSpaces(query[prop].toString()));
@@ -291,5 +290,5 @@ function handleSpaces(str) {
     }
     return newStr;
 }
-
-document.getElementById("button").addEventListener("click", getFortune);
+//waits for button to be clicked before recieving a fortune
+document.getElementById("button").addEventListener("click", getFortune); 
