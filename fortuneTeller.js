@@ -145,8 +145,7 @@ exports.generateQs = function () {
 //         case totalVal in Range(14,16) :
 //         return fortunes[3].fortune;
 //         case totalVal in Range(20,24) :
-//         return fortunes[4].fortune;
-      
+//         return fortunes[4].fortune;      
 //     }    
 // };
 
